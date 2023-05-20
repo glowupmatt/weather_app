@@ -2,11 +2,13 @@ import axios from "axios";
 
 const BASE_URL = "https://api.ipbase.com/v2/info?apikey=";
 
+export const API_KEY = process.env.REACT_APP_API_KEY;
+
 const ipOption = {
   url: BASE_URL,
   params: {},
   headers: {
-    apikey: "KuHpLEPsndxzPmoBjpq2UBCpIE8QQt1MNjF7CNga",
+    apikey: API_KEY,
   },
 };
 
