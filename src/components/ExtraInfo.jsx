@@ -1,29 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ExtraInfo.css";
+import styled from "styled-components";
+import { fetchFromWorldTimeAPI } from "../utils";
 
-const ExtraInfo = ({ clicked }) => {
+const ExtraInfo = ({
+  ip,
+  afterSunRise,
+  beforeSunSet,
+  clicked,
+  state,
+  country,
+}) => {
+  const [dayOfYear, setDayOfYear] = useState(null);
+  const [dayOfWeek, setDayOfWeek] = useState(null);
+  const [weekNumber, setWeekNumber] = useState(null);
+
+  useEffect(() => {
+    fetchFromWorldTimeAPI(ip).then((data) => setDayOfYear(data.day_of_year));
+    fetchFromWorldTimeAPI(ip).then((data) => setDayOfWeek(data.day_of_week));
+    fetchFromWorldTimeAPI(ip).then((data) => setWeekNumber(data.week_number));
+  });
+
   const info = [
     {
       title: "CURRENT TIMEZONE",
-      info: "Europe/London",
+      info: `${state}/${country}`,
     },
     {
       title: "DAY OF THE YEAR",
-      info: "295",
+      info: `${dayOfYear}`,
     },
     {
       title: "DAY OF THE WEEK",
-      info: "5",
+      info: `${dayOfWeek}`,
     },
     {
       title: "WEEK NUMBER",
-      info: "42",
+      info: `${weekNumber}`,
     },
   ];
+
+  const BackgroundColor = styled.div`
+    background-color: ${afterSunRise && beforeSunSet
+      ? "rgba(255, 255, 255, 0.75)"
+      : "rgba(0, 0, 0, 0.5)"};
+
+    color: ${afterSunRise && beforeSunSet
+      ? "rgba(0, 0, 0, 0.5)"
+      : "rgb(255, 255, 255)"};
+  `;
   return (
-    <div
+    <BackgroundColor
       className={
-        clicked === true
+        clicked
           ? "extra-info-container-active"
           : "extra-info-container-inactive"
       }
@@ -36,7 +65,7 @@ const ExtraInfo = ({ clicked }) => {
           </div>
         );
       })}
-    </div>
+    </BackgroundColor>
   );
 };
 

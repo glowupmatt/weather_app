@@ -15,10 +15,39 @@
   filter: brightness(70%);
 }
 
+.background-img-dark {
+  background-image: url("/public/assets/mobile/bg-image-nighttime.jpg");
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  min-width: 100vw;
+  filter: brightness(70%);
+}
+
+@media screen and (min-width: 768px) {
+  .background-img {
+    background-image: url("/public/assets/tablet/bg-image-daytime.jpg");
+  }
+  .background-img-dark {
+    background-image: url("/public/assets/tablet/bg-image-nighttime.jpg");
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .background-img {
+    background-image: url("/public/assets/desktop/bg-image-daytime.jpg");
+  }
+  .background-img-dark {
+    background-image: url("/public/assets/desktop/bg-image-nighttime.jpg");
+  }
+}
+
 .content-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  padding-top: 5rem;
+  padding-top: 1rem;
 }

@@ -7,6 +7,20 @@
   position: relative;
   font-size: 12px;
   height: 100%;
+  gap: 10rem;
+}
+
+.main-content-active {
+  margin-top: 99px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  font-size: 12px;
+  height: 100%;
+  gap: 10rem;
 }
 
 .quote-header-inactive {
@@ -21,22 +35,29 @@
   display: none;
 }
 
+h1 {
+  color: white;
+}
+
 .quote {
   display: flex;
   color: white;
   margin-top: 1rem;
+  cursor: pointer;
 }
 
 .icon {
   opacity: 0.8;
 }
 
-.quote > p {
+.quote-header-active > .quote > p,
+.quote-header-inactive > .quote > p {
   color: white;
   font-weight: 400;
   line-height: 22px;
 }
-.quote-header > h4 {
+.quote-header-active > h4,
+.quote-header-inactive > h4 {
   color: white;
   font-weight: 700;
   line-height: 22px;
@@ -50,32 +71,33 @@
   color: white;
 }
 
-.time-container-inactive {
+.time-container-inactive,
+.time-container-active {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.time-container-inactive > h2 {
+.time-container-inactive > h2,
+.time-container-active > h2 {
   display: flex;
-  font-size: 100px;
+  font-size: 3rem;
   align-items: flex-end;
   color: white;
 }
-.time-container-inactive > h2 > span {
+.time-container-inactive > h2 > span,
+.time-container-active > h2 > span {
   font-size: 15px;
   color: white;
 }
 
-.time-container-inactive > p {
+.time-container-inactive > p,
+.time-container-active > p {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   margin-bottom: 1rem;
   color: white;
-}
-
-.time-container-active {
 }
 
 .extra-info-button {
@@ -86,7 +108,7 @@
   border-radius: 30px;
   border: none;
   padding: 0.3rem;
-  width: 35%;
+  width: 6rem;
   margin-top: 2rem;
   background-color: white;
   color: #303030;
@@ -100,4 +122,107 @@
 
 .arrow-circle-active {
   transform: rotate(3.142rad);
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .main-content,
+  .main-content-active {
+    padding: 0 4rem;
+  }
+  .time-container-inactive > h2,
+  .time-container-active > h2 {
+    font-size: 5rem;
+  }
+  .quote-header-active > h4,
+  .quote-header-inactive > h4 {
+    color: white;
+    font-weight: 700;
+    line-height: 22px;
+    font-size: 18px;
+  }
+
+  .time-container-inactive > h2 > span,
+  .time-container-active > h2 > span {
+    font-size: 2rem;
+  }
+
+  .quote-header-active > .quote > p,
+  .quote-header-inactive > .quote > p {
+    color: white;
+    font-weight: 400;
+    line-height: 22px;
+    font-size: 18px;
+  }
+  .extra-info-button {
+    width: 6rem;
+  }
+
+  .time-container-inactive > p {
+    font-size: 18px;
+  }
+
+  .time-container-info {
+    font-size: 1.125rem;
+  }
+}
+
+@media screen and (min-width: 1024px) and (min-height: 802px) {
+  .quote-header-inactive {
+    width: 54%;
+    font-size: 18px;
+  }
+
+  .main-content {
+    height: 93%;
+  }
+
+  .main-content-active {
+    height: 60%;
+  }
+
+  .time-container-incButton {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+  }
+
+  .time-container-incButton > .extra-info-button {
+    width: 7rem;
+    height: 3rem;
+  }
+
+  .time-container-active > .time-container-info > p {
+    font-size: 18px;
+  }
+  .time-container-incButton > .time-container-inactive > h2,
+  .time-container-incButton > .time-container-active > h2 {
+    font-size: 8rem;
+  }
+
+  .time-container-info {
+    font-size: 1.125rem;
+  }
+
+  .time-container-incButton > .time-container-inactive > p,
+  .time-container-incButton > .time-container-active > p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 768px) and (min-height: 602px) {
+  .main-content {
+    padding: 1rem 4rem;
+  }
+}
+
+@media screen and (min-height: 802px) {
+  .time-container-inactive > h2 {
+    font-size: 175px;
+  }
+
+  .extra-info-button {
+    width: 23%;
+  }
 }
