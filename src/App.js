@@ -12,19 +12,12 @@ function App() {
   const [ip, setIp] = useState("");
 
   useEffect(() => {
-    fetchFromAPI(`info?apikey=${API_KEY}`).then((data) =>
-      setCountry(data.data.location.country.name)
-    );
-
-    fetchFromAPI(`info?apikey=${API_KEY}`).then((data) => setIp(data.data.ip));
-
-    fetchFromAPI(`info?apikey=${API_KEY}`).then((data) =>
-      setState(data.data.location.region.name)
-    );
-
-    fetchFromAPI(`info?apikey=${API_KEY}`).then((data) =>
-      setTime(data.data.timezone.current_time)
-    );
+    fetchFromAPI(`info?apikey=${API_KEY}`).then((data) => {
+      setCountry(data.data.location.country.name);
+      setIp(data.data.ip);
+      setState(data.data.location.region.name);
+      setTime(data.data.timezone.current_time);
+    });
   }, []);
 
   const date = new Date(time);

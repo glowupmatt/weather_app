@@ -45,8 +45,10 @@ const MainContent = ({
           <p>{quote}</p>
           <LoopTwoToneIcon
             onClick={() => {
-              fetchRandomQuote().then((data) => setQuote(data[0].content));
-              fetchRandomQuote().then((data) => setAuthor(data[0].author));
+              fetchRandomQuote().then((data) => {
+                setQuote(data[0].content);
+                setAuthor(data[0].author);
+              });
             }}
             className="icon"
           />

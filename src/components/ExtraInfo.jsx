@@ -16,9 +16,11 @@ const ExtraInfo = ({
   const [weekNumber, setWeekNumber] = useState(null);
 
   useEffect(() => {
-    fetchFromWorldTimeAPI(ip).then((data) => setDayOfYear(data.day_of_year));
-    fetchFromWorldTimeAPI(ip).then((data) => setDayOfWeek(data.day_of_week));
-    fetchFromWorldTimeAPI(ip).then((data) => setWeekNumber(data.week_number));
+    fetchFromWorldTimeAPI(ip).then((data) => {
+      setDayOfYear(data.day_of_year);
+      setDayOfWeek(data.day_of_week);
+      setWeekNumber(data.week_number);
+    });
   });
 
   const info = [
