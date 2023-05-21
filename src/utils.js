@@ -14,15 +14,15 @@ const ipOption = {
 
 const randomQuote = "https://api.quotable.io/quotes/random";
 
-const worldTimeApiURL = "http://worldtimeapi.org/api/ip/";
+const worldTimeApiURL = "http://worldtimeapi.org/api/ip";
 
-export const fetchRandomQuote = async (url) => {
+export const fetchRandomQuote = async () => {
   const { data } = await axios.get(`${randomQuote}`);
   return data;
 };
 
-export const fetchFromWorldTimeAPI = async (url) => {
-  const { data } = await axios.get(`${worldTimeApiURL}`);
+export const fetchFromWorldTimeAPI = async (ip) => {
+  const { data } = await axios.get(`${worldTimeApiURL}/${ip}`);
   return data;
 };
 
